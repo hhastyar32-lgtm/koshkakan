@@ -1,0 +1,9 @@
+{
+  "name":"koshkakan",
+  "version":"2.0.0",
+  "private":true,
+  "description":"Koshkakan - Kurdish cottage booking platform",
+  "scripts":{"start":"node server.js"},
+  "engines":{"node":">=20"},
+  "dependencies":{"bcryptjs":"^2.4.3","better-sqlite3":"^11.3.0","cookie-session":"^2.1.0","express":"^4.21.1"}
+}
