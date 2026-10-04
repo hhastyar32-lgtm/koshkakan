@@ -1,19 +1,30 @@
-# کۆشکەکان — Production-ready starter
+# کۆشکەکان
 
-پلاتفۆرمی حجزکردنی کۆشک، مەزرەعە و باغ بە زمانی سۆرانی.
+پلاتفۆرمی حجزکردنی کۆشک و شوێنی پشوودان.
 
-## خێراکردن
-1. Node.js 20+ دابەزێنە.
-2. `npm install`
-3. `.env.example` بکە بە `.env` و SESSION_SECRET و هەژماری Admin بگۆڕە.
-4. `npm start`
-5. لە `http://localhost:3000` بیکەرەوە.
+## Run locally
+```bash
+npm install
+npm start
+```
+Then open `http://localhost:3000`.
 
-## Online
-`render.yaml` بۆ Render ئامادە کراوە. SQLite لە `/app/db` هەڵدەگیرێت و پێویستی بە persistent disk هەیە.
+## Render
+This project uses Docker and reads `PORT` from Render.
 
-## پارەدان
-ئێستا payment record + manual flow هەیە. بۆ پارەدانی ئۆنلاین، credential ـی provider ـێکی گونجاو بۆ بازاڕی عێراق پێویستە. `PAYMENT_PROVIDER`, `PAYMENT_API_KEY`, `PAYMENT_API_SECRET` بۆ ئەو مەبەستە دانراون.
+Required environment variables:
+- `SESSION_SECRET`
+- `ADMIN_EMAIL`
+- `ADMIN_PASSWORD`
 
-## Admin
-هەژماری Admin لە environment variables دروست دەکرێت. دوای deploy وشەی نهێنییەکە بگۆڕە و هەرگیز credential ـەکان لە GitHub/HTML دانەمەزرێنە.
+`render.yaml` is configured for the free web plan. SQLite on a free ephemeral service is suitable for testing/demo, not permanent production data. For real production, use a persistent disk or an external database.
+
+## Main fixes in this version
+- Owner registration is available from the registration form.
+- Better input validation.
+- Booking capacity validation.
+- Prevents overlapping bookings.
+- Secure session cookie in production.
+- Admin dashboard for approving properties and changing customer/owner roles.
+- Image URL field for properties.
+- Server listens on `0.0.0.0` and respects Render's `PORT`.

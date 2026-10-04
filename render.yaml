@@ -2,7 +2,7 @@ services:
   - type: web
     name: koshkakan
     runtime: docker
-    plan: starter
+    plan: free
     healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
@@ -15,7 +15,3 @@ services:
         sync: false
       - key: PAYMENT_PROVIDER
         value: manual
-    disk:
-      name: koshkakan-data
-      mountPath: /app/db
-      sizeGB: 1
