@@ -6,11 +6,9 @@ const session = require('cookie-session');
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
-const DB_DIR = path.join(__dirname, 'db');
+const DB_DIR = path.join(require('os').tmpdir(), 'koshkakan-db');
 const DB_FILE = path.join(DB_DIR, 'koshkakan.sqlite');
-
 require('fs').mkdirSync(DB_DIR, { recursive: true });
-
 const db = new Database(DB_FILE);
 db.pragma('foreign_keys=ON');
 db.pragma('journal_mode=WAL');
